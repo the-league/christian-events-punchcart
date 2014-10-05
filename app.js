@@ -1,28 +1,7 @@
-// var svg = d3.select("svg");
-
-// var circle = svg.selectAll("circle")
-//     .data([32, 57]);
-
-// // var circleEnter = circle.enter().append("circle");
-
-// // circleEnter.style("fill", "steelblue");
-// // circleEnter.attr("cy", 60);
-// // circleEnter.attr("cx", function(d, i) { return i * 100 + 30});
-// // circleEnter.attr("r", function(d) { return Math.sqrt(d); });
-
-//   circle.enter().append("circle")
-//     .attr("cy", 60)
-//     .attr("cx", function(d, i) { return i * 100 + 30; })
-//     .attr("r", function(d) { return Math.sqrt(d); });
-
-// circle.exit().remove();
-
 var rawData = ["2014/07/14","2014/07/13","2014/07/26","2014/07/26","2014/08/04","2014/10/10","2014/10/24","2014/07/26","2014/08/03","2014/11/24","2014/01/24","2014/09/21","2014/09/18","2014/11/27","2014/11/26","2014/11/08","2014/10/11","2014/09/01","2014/09/05","2014/09/26","2014/11/01","2014/09/11","2014/10/15","2014/11/08","2015/06/06","2014/08/11","2014/09/12","2015/03/20","2014/11/07","2014/08/02","2014/08/03","2014/10/10","2014/10/11","2014/10/17","2014/10/18","2014/10/24","2014/10/25","2014/11/21","2014/11/22","2014/11/07","2014/11/08","2014/11/14","2014/11/15","2014/11/21","2014/11/22","2014/11/28","2014/11/29","2014/08/21","2014/08/23","2014/08/24","2014/10/31","2014/11/01","2014/01/02","2014/08/30","2014/09/10","2014/10/22","2014/11/26","2014/12/17","2014/09/20","2014/09/07","2014/07/14","2014/07/21","2014/07/28","2014/08/04","2014/08/11","2014/08/18","2014/08/04","2014/08/11","2014/08/04","2014/08/05","2014/07/19","2014/09/08","2014/10/30","2014/08/16","2014/09/01","2014/09/05","2014/09/08","2014/09/19","2014/10/03","2014/10/17","2014/11/14","2015/02/20","2015/03/20","2015/03/25","2014/08/16","2014/08/18","2014/08/18","2014/08/19","2014/08/21","2014/08/22","2014/08/23","2014/08/27","2014/08/30","2014/12/27","2014/07/05","2014/08/20","2014/08/23","2014/09/30","2014/09/01","2014/09/01","2014/09/15","2014/09/01","2014/09/03","2014/09/04","2014/09/03","2014/09/03","2014/10/01","2014/11/20","2014/03/13","2014/03/08","2014/09/09","2014/11/25","2014/09/27","2014/09/20","2014/09/27","2014/03/22","2014/03/27","2014/03/28","2014/04/05","2014/10/24","2014/04/05","2014/04/12","2014/09/13","2014/10/11","2014/11/01","2014/12/13","2015/01/10","2014/10/04","2014/10/24","2014/10/31","2014/03/29","2014/09/13","2014/09/20","2014/10/03","2014/10/25","2014/11/28","2014/08/02","2014/11/29","2014/11/28","2015/03/28","2014/06/06","2014/04/04","2014/07/27","2014/04/05","2014/09/12","2014/09/13","2015/05/13","2015/07/18","2015/07/25","2015/08/01","2014/08/23","2014/10/04","2014/10/11","2014/10/04","2014/10/03","2014/10/04","2014/10/04","2014/10/04","2014/10/04","2014/10/04","2014/10/17","2014/12/26","2014/09/08","2014/09/19","2014/08/27","2014/09/03","2014/09/10","2014/09/09","2014/09/16","2014/09/23","2014/09/30","2014/09/10","2014/10/15","2014/11/12","2014/12/10","2014/09/17","2014/09/24","2014/10/01","2014/10/08","2014/10/01","2014/10/08","2014/10/15","2014/10/22","2014/10/02","2014/10/09","2014/10/16","2014/10/30","2014/10/09","2014/10/23","2014/11/06","2014/11/20","2014/10/09","2014/10/16","2014/10/23","2014/10/30","2014/10/15","2014/11/05","2014/11/12","2014/11/19","2014/10/21","2014/11/04","2014/11/11","2014/12/02","2014/10/24","2014/10/31","2014/11/21","2014/11/28","2014/08/27","2014/09/03","2014/09/10","2014/09/17","2014/09/24","2014/10/01","2014/10/08","2014/10/28","2014/10/29","2014/10/11","2014/09/13","2014/11/22","2014/09/05","2014/09/26","2014/10/24","2014/11/14","2014/09/11","2014/09/12","2014/09/16","2014/09/19","2014/09/22","2014/10/10","2014/11/28","2015/05/01","2014/10/16","2014/08/18","2014/09/05","2014/09/19","2014/09/26","2014/10/16","2014/04/12","2014/10/04","2014/10/31","2014/11/14","2014/05/10","2014/06/14","2014/10/01","2014/08/29","2014/08/30","2014/09/01","2014/09/02","2014/09/02","2014/09/03","2014/09/03","2014/09/03","2014/06/28","2014/04/12","2014/09/06","2014/09/06","2014/09/06","2014/09/06","2014/09/06","2014/09/07","2014/09/07","2014/09/08","2014/09/08","2014/09/08","2014/09/09","2014/09/09","2014/09/11","2014/09/13","2014/09/14","2014/09/14","2014/10/12","2014/11/09","2014/12/14","2014/09/15","2014/10/13","2014/11/17","2014/09/17","2014/09/17","2014/09/19","2014/09/2"];
 
-// gets a number between 0-6 as argument, 0 represents sunday
-// returns the name of the day
-var returnDayName = function (dayNumber) {
-  var dayNames = [
+
+var days = [
     "Sunday",
     "Monday",
     "Tuesday",
@@ -32,8 +11,27 @@ var returnDayName = function (dayNumber) {
     "Saturday"
   ];
 
-  return dayNames[dayNumber];
+var months = [
+  'Jan',
+  'Feb',
+  'Mar',
+  'Apr', 
+  'May',
+  'June', 
+  'July',
+  'Aug',
+  'Sept',
+  'Okt',
+  'Nov',
+  'Dec'
+];
+
+// gets a number between 0-6 as argument, 0 represents sunday
+// returns the name of the day
+var returnDayName = function (dayNumber) {
+  return days[dayNumber];
 }
+
 
 // array containing all Date objects for every event
 var data = [];
@@ -66,53 +64,59 @@ for (var i = 0; i < data.length; i++) {
 var sunday = freq[0];
 
 // Actual data visualisation
-var svg = d3.select("#svg");
+var w = 750;
+var h = 500;
+var paddingX = 75;
+var paddingY = 35;
+
+var svg = d3.select("body")
+            .append('svg')
+            .attr('width', w)
+            .attr('height', h);
 
 
-// var circle = svg.selectAll("circle")
-//   .data(sunday);
 
-// var circleEnter = circle.enter().append("circle");
-//     circleEnter.style("fill", "steelblue");
-//     circleEnter.attr("cy", 60);
-//     circleEnter.attr("cx", function (d, i) { return i * 50 + 10 });
-//     circleEnter.attr("r", function (d, i) { return d * 3; });
 
-var g = svg.selectAll("svg")
+var g = svg.selectAll("g")
     .data(freq)
-  .enter().append("svg");
+  .enter().append("g");
 
-  g.attr("y", function(d, i) { return i * 60; });
+  g.attr("transform", function (d, i) {
+    var y = 0;
+    return 'translate(0, ' + i * 60 + ')';
+  });
 
 var circle = g.selectAll("circles")
     .data(function(d, i) { return d; }) // d = freq[i]
   .enter().append("circle");
 
   circle.style("fill", "steelblue");
-  circle.attr("cy", 60);
-  circle.attr("cx", function (d, i) { return i * 50 + 10; });
+  circle.attr("cy", paddingY);
+  circle.attr("cx", function (d, i) { return i * 50 + paddingX*1.5; });
   circle.attr("r", function (d, i) { return Math.sqrt(d)*4; });
-    // circleEnter.style("fill", "steelblue");
-    // circleEnter.attr("cy", 60);
-    // circleEnter.attr("cx", function (d, i) { return i * 50 + 10 });
-    // circleEnter.attr("r", function (d, i) { return d[0] * 3; });
 
+// X axis
+var xScale = d3.scale.ordinal();
+xScale.domain(months)
+    .rangePoints([paddingX*1.5, w - paddingX - 10]);
 
-// var circleEnter = circle.enter().append("circle");
-//     circleEnter.style("fill", "steelblue");
-//     for (var day = 0; day < freq.length; day++) {
-//       circleEnter.attr("cy", day * 60 + 60);
-//       for (var month = 0; month < freq[day].length; month++) {
-//         circleEnter.attr("cx", month * 50 + 10); 
-//         circleEnter.attr("r", function (d) { return d[day][month]});
-//       }
-//     };
+var xAxis = d3.svg.axis()
+          .scale(xScale);
 
-// var circle = svg.selectAll("circle")
-//     .data(data);
+var yScale = d3.scale.ordinal();
+yScale.domain(days)
+    .rangePoints([paddingY, h - paddingX - 30]);
 
-// var circleEnter = circle.enter().append("circle");
-//     circleEnter.style("fill", "steelblue")
-//     circleEnter.attr("cx", function (d, i) { return i * 50 + 10; });
-//     circleEnter.attr("cy", function (d, i) { return 60 + d.getDay() * 60; });
+var yAxis = d3.svg.axis()
+          .scale(yScale)
+          .orient("left");
 
+svg.append('g')
+          .attr('class', 'axis x')
+          .attr('transform', 'translate(0,' + (h - paddingY*2) + ')')
+          .call(xAxis);
+
+svg.append('g')
+          .attr('class', 'axis y')
+          .attr('transform', 'translate(' + paddingX + ')')
+          .call(yAxis);
