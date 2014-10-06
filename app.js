@@ -6,7 +6,7 @@ var paddingR = 50;
 var paddingL = 100;
 var paddingT = 35;
 var paddingB = 70;
-var diameter = 20;
+var radius= 20;
 
 
 // Data
@@ -70,7 +70,7 @@ var sunday = freq[0];
 
 var valueScale = d3.scale.linear();
 valueScale.domain([0, d3.max(values, function (d) { return d; }) ])
-  .range([0, diameter]);
+  .range([0, radius]);
 
 
 var svg = d3.select("body")
